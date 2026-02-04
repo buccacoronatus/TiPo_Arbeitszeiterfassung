@@ -1,5 +1,5 @@
 round(Zahl, Nachkommastellen)
-rundet auf! 
+rundet auf
 
 time.time() 
 returns time since the epoch (1970) in seconds

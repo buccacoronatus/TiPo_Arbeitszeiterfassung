@@ -1,7 +1,6 @@
 import time
 import csv
 
-
 class TimePoker():
     def __init__(self):
         time_object = time.localtime()
@@ -12,9 +11,18 @@ class TimePoker():
         self.wochentag = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'][time_object[6]]
         
         self.start = time.time()
+        self.startzeit = f'{time_object[3]}:{self.zero_minutes(time_object[4])}'
 
+        self.endzeit = ''
+
+    @staticmethod
+    def zero_minutes(minuten):
+         return f"{minuten:02d}"
+    
     def run(self):
         input('Taste drücken zum beenden und speichern')
+        endtime_objekt = time.localtime()
+        self.endzeit =  f'{endtime_objekt[3]}:{self.zero_minutes(endtime_objekt[4])}'
         self.write_to_csv()
     
     def pause():
@@ -30,7 +38,9 @@ class TimePoker():
         with open('test_data.csv', 'a', newline='') as csvfile:
             csv.writer(
                 csvfile, delimiter=' ').writerow(
-                [self.wochentag]+[self.jahr]+[self.monat]+[self.tag]+[self.calculate_stunden()]
+                [self.wochentag]+[self.jahr]+[self.monat]
+                +[self.tag]+[self.startzeit]+[self.endzeit]
+                +[self.calculate_stunden()]
                 )
 
 timer = TimePoker()
