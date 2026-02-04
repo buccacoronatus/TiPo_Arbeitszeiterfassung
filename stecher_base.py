@@ -12,13 +12,13 @@ class Time_Poker():
 
     def pause():
         pass
-
+    
+    @staticmethod
     def calculate_stunden(start, end):
         return round(round((end - start) / 3600, 1) * 2) / 2
     
-    def write_to_csv(self, start, end):
-        print(start, end)
-        stunden = round(round((end - start) / 3600, 1) * 2) / 2
+    def write_to_csv(self, stunden):
+        # stunden = round(round((end - start) / 3600, 1) * 2) / 2
         csv_string = f'{self.Wochentag}, {self.Jahr}, {self.Monat}, {self.Tag}, {stunden}\n'
         print(csv_string, sep="")
 
@@ -29,4 +29,6 @@ timer = Time_Poker()
 start = timer.take_time()
 input('Taste drücken zum beenden')
 
-timer.write_to_csv(start, timer.take_time())
+timer.write_to_csv(
+    timer.calculate_stunden(start, timer.take_time())
+    )
