@@ -1,16 +1,16 @@
 import time
 
-class Time_Poker():
+class TimePoker():
     def __init__(self):
-        self.Jahr = time.localtime()[0]
-        self.Monat = time.localtime()[1]
-        self.Tag = time.localtime()[2]
-        self.Wochentag = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'][time.localtime()[6]]
+        self.jahr = time.localtime()[0]
+        self.monat = time.localtime()[1]
+        self.tag = time.localtime()[2]
+        self.wochentag = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'][time.localtime()[6]]
         self.start = time.time()
 
-    def start(self):
+    def run(self):
         input('Taste drücken zum beenden und speichern')
-        self.write_to_csv(self)
+        self.write_to_csv()
     
     def pause():
         pass
@@ -19,11 +19,13 @@ class Time_Poker():
         return round(round((time.time() - self.start) / 3600, 1) * 2) / 2
     
     def write_to_csv(self):
-        csv_string = f'{self.Wochentag}, {self.Jahr}, {self.Monat}, {self.Tag}, {timer.calculate_stunden()}\n'
+        csv_string = f'{self.wochentag}, {self.jahr}, {self.monat}, {self.tag}, {self.calculate_stunden()}\n'
         print(csv_string, sep="")
 
         with open('.//test_data.csv', 'a', encoding="UTF-8") as data_file:
-            data_file.write(csv_string)
+            data_file.write(csv_string, sep="")
 
-timer = Time_Poker()
-timer.start()
+timer = TimePoker()
+timer.run()
+
+# csv.writer
