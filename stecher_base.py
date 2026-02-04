@@ -8,6 +8,10 @@ class Time_Poker():
         self.Wochentag = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'][time.localtime()[6]]
         self.start = time.time()
 
+    def start(self):
+        input('Taste drücken zum beenden und speichern')
+        self.write_to_csv(self)
+    
     def pause():
         pass
     
@@ -22,5 +26,4 @@ class Time_Poker():
             data_file.write(csv_string)
 
 timer = Time_Poker()
-input('Taste drücken zum beenden und speichern')
-timer.write_to_csv()
+timer.start()
